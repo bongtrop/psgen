@@ -1,0 +1,4 @@
+pyyaml
+tabulate
+Jinja2
+git+https://github.com/jusmistic/ps-minifier
