@@ -1,11 +1,11 @@
 ##########
-Name: Hello-world
-Author: Bongtrop
-Description: Print Hello-world [COUNT] Time
+Name: hello-world
+Author: Jusmistic
+Description: Print Hello-World! [COUNT] time(s)
 Options:
     count: "Times you want to print Hello world"
 ##########
 
-For ($i=0; $i -le {{ count  }}; $i++) {
+For ($i=0; $i -lt {{ count  }}; $i++) {
     Write-Host "Hello, World!";
 }

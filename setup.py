@@ -23,7 +23,9 @@ setup(name=psgen.__name__,
       include_package_data = True,
       install_requires=[
         "pyyaml",
-        "tabulate"
+        "tabulate",
+        "Jinja2",
+        "git+https://github.com/jusmistic/ps-minifier"
       ],
       entry_points="""
         [console_scripts]
