@@ -25,7 +25,7 @@ setup(name=psgen.__name__,
         "pyyaml",
         "tabulate",
         "Jinja2",
-        "git+https://github.com/jusmistic/ps-minifier"
+        "ps_minifier @ git+https://github.com/jusmistic/ps-minifier"
       ],
       entry_points="""
         [console_scripts]
