@@ -95,7 +95,7 @@ def main():
             options = payload["Options"]
             options_str = ""
             for option in options:
-                options_str += "%s => %s\n" % (option, options[option])
+                options_str += "%s => '%s', " % (option, options[option])
                 
             data.append([payload["Name"], payload["Author"], payload["Description"], options_str])
         print("Powershell Payloads")
@@ -117,7 +117,7 @@ def main():
             if option not in input_options:
                 input_options[option] = input("Set option [ %s ]: " % option)
             
-            options_str += "%s=%s\t" % (option, repr(input_options[option]))
+            options_str += "%s=%s, " % (option, repr(input_options[option]))
 
         template = Template(payload["Script"])
         script = template.render(input_options)
@@ -133,7 +133,7 @@ def main():
         print("Payload Output")
         print("==============")
         if args.raw:
-            print("powershell.exe -C %s" % escape(script))
+            print("powershell.exe -C \"%s\"" % escape(script))
         else:
             print("powershell.exe -E %s" % encode(script))
         print()
