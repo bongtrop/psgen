@@ -87,6 +87,8 @@ def main():
                     help='Payload Options')
     parser.add_argument('-l', '--list', action='store_true',
                     help='List Payloads')
+    parser.add_argument('-s', '--show', action='store_true',
+                    help='Show payload options')
     parser.add_argument('-r', '--raw', action='store_true',
                     help='Output with raw Powershell payload')
 
@@ -95,19 +97,32 @@ def main():
     
     print()
     if args.list:
-        headers = ["Name", "Author", "Description", "Options"]
+        headers = ["Name", "Author", "Description"]
         data = []
-        for payload in payloads:
-            options = payload["Options"]
-            options_str = ""
-            for option in options:
-                options_str += "%s => '%s'\n" % (option, clip(options[option], 60))
-            
-            data.append([clip(payload["Name"], 15), clip(payload["Author"], 25), clip(payload["Description"], 60), options_str])
+        for payload in payloads:            
+            data.append([clip(payload["Name"], 20), clip(payload["Author"], 30), clip(payload["Description"], 70)])
+
         print("Powershell Payloads")
         print("===================")
-        print(tabulate(data, headers=headers, tablefmt="rst"))
+        print(tabulate(data, headers=headers, tablefmt="fancy_grid"))
         print()
+    elif args.show:
+        payload = get_payload(payloads, args.payload)
+        if not payload:
+            print("[-] Error payload not found [ %s ]" % args.payload)
+            sys.exit(1)
+
+        options_str = ""
+        for option in payload["Options"]:
+            options_str += "  - %s => %s\n" % (option, repr(payload["Options"][option]))
+
+        print("Payload Detail")
+        print("==============")
+        print("Payload Name: %s" % payload["Name"])
+        print("Payload Author: %s" % payload["Author"])
+        print("Payload Description: %s" % payload["Description"])
+        print("Payload Options:")
+        print(options_str)
     elif args.payload:
         payload = get_payload(payloads, args.payload)
         if not payload:
