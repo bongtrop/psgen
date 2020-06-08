@@ -73,6 +73,12 @@ def escape(script):
 def encode(script):
     return base64.b64encode(script.encode('utf16')[2:]).decode()
 
+def clip(text, l):
+    if len(text) > l:
+        return text[:l-3] + "..."
+
+    return text
+
 def main():
     parser = argparse.ArgumentParser(description=psgen.__doc__)
     parser.add_argument('payload', nargs='?', metavar='payload', type=str,
@@ -95,12 +101,12 @@ def main():
             options = payload["Options"]
             options_str = ""
             for option in options:
-                options_str += "%s => '%s', " % (option, options[option])
-                
-            data.append([payload["Name"], payload["Author"], payload["Description"], options_str])
+                options_str += "%s => '%s'\n" % (option, clip(options[option], 60))
+            
+            data.append([clip(payload["Name"], 15), clip(payload["Author"], 25), clip(payload["Description"], 60), options_str])
         print("Powershell Payloads")
         print("===================")
-        print(tabulate(data, headers=headers, tablefmt='orgtbl'))
+        print(tabulate(data, headers=headers, tablefmt="rst"))
         print()
     elif args.payload:
         payload = get_payload(payloads, args.payload)
@@ -111,7 +117,6 @@ def main():
         input_options = {}
         if args.options:
             input_options = load_options(args.options)
-        
         options_str = ""
         for option in payload["Options"]:
             if option not in input_options:
@@ -137,7 +142,6 @@ def main():
         else:
             print("powershell.exe -E %s" % encode(script))
         print()
-        pass
     else:
         parser.print_help()
         sys.exit(1)
