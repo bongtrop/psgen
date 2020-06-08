@@ -1,6 +1,6 @@
 ##########
 Name: "reverse-shell"
-Author: "@nikhil_mitt http://www.labofapenetrationtester.com/2015/05/week-of-powershell-shells-day-1.html"
+Author: "@nikhil_mitt"
 Description: "Spawn Reverse shell"
 Options:
     host: "IP for reverse shell (Ex.0.0.0.0)"
