@@ -104,3 +104,5 @@ For ($i=0; $i -lt {{ count  }}; $i++) {
     Write-Host "Hello, World!";
 }
 ```
+
+The psgen tool also loads payloads in the home directory as `~/.psgen/payload`. Therefore, you can put your payload there (e.g., `~/.psgen/payload/shutdown.ps1`).
