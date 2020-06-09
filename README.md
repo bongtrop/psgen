@@ -48,9 +48,9 @@ Powershell Payloads
 ╞══════════════════════╪═══════════════╪══════════════════════════════════════════╡
 │ check-dir-permission │ BHARAT SUNEJA │ Check directory permission               │
 ├──────────────────────┼───────────────┼──────────────────────────────────────────┤
-│ download-file        │ Jusmistic     │ Download file from url                   │
+│ example              │ Jusmistic     │ Print a word [COUNT] time(s)             │
 ├──────────────────────┼───────────────┼──────────────────────────────────────────┤
-│ hello-world          │ Jusmistic     │ Print Hello-World! [COUNT] time(s)       │
+│ download-file        │ Jusmistic     │ Download file from url                   │
 ├──────────────────────┼───────────────┼──────────────────────────────────────────┤
 │ http-eval            │ bongtrop      │ Download and execute ps1 script from URL │
 ├──────────────────────┼───────────────┼──────────────────────────────────────────┤
@@ -63,55 +63,56 @@ Powershell Payloads
 │ reverse-shell        │ @nikhil_mitt  │ Spawn Reverse shell                      │
 ╘══════════════════════╧═══════════════╧══════════════════════════════════════════╛
 
-$ psgen hello-world -s     
+$ psgen example -s
 
 Payload Detail
 ==============
-Payload Name: hello-world
+Payload Name: example
 Payload Author: Jusmistic
-Payload Description: Print Hello-World! [COUNT] time(s)
+Payload Description: Print a word [COUNT] time(s)
 Payload Options:
-  - count => 'Times you want to print Hello world'
+  - word => 'The word that you want to print'
+  - count => 'Times you want to print the word'
 
-$ psgen hello-world count=5
+$ psgen example "word=Hello World\!" count=5
 
 Payload Detail
 ==============
-Payload Name: hello-world
+Payload Name: example
 Payload Author: Jusmistic
-Payload Description: Print Hello-World! [COUNT] time(s)
-Payload Options: count='5', 
-## Note
-
+Payload Description: Print a word [COUNT] time(s)
+Payload Options: word='Hello World!', count='5', 
 
 Payload Output
 ==============
-powershell.exe -E RgBvAHIAKAAkAGEAPQAwADsAIAAkAGEAIAAtAGwAdAAgADUAOwAgACQAYQArACsAKQB7AFcAcgBpAHQAZQAtAEgAbwBzAHQAIAAiAEgAZQBsAGwAbwAsACAAVwBvAHIAbABkACEAIgA7AH0A
+powershell.exe -E RgBvAHIAKAAkAGEAPQAwADsAIAAkAGEAIAAtAGwAdAAgADUAOwAgACQAYQArACsAKQB7AFcAcgBpAHQAZQAtAEgAbwBzAHQAIAAiAEgAZQBsAGwAbwAgAFcAbwByAGwAZAAhACIAOwB9AA==
 
-$ pwsh -E RgBvAHIAKAAkAGEAPQAwADsAIAAkAGEAIAAtAGwAdAAgADUAOwAgACQAYQArACsAKQB7AFcAcgBpAHQAZQAtAEgAbwBzAHQAIAAiAEgAZQBsAGwAbwAsACAAVwBvAHIAbABkACEAIgA7AH0A # Using Linux powershell (pwsh) to test the generated payload.
-Hello, World!
-Hello, World!
-Hello, World!
-Hello, World!
-Hello, World!
+$ # Using Linux powershell (pwsh) to test the generated 
+$ pwsh -E RgBvAHIAKAAkAGEAPQAwADsAIAAkAGEAIAAtAGwAdAAgADUAOwAgACQAYQArACsAKQB7AFcAcgBpAHQAZQAtAEgAbwBzAHQAIAAiAEgAZQBsAGwAbwAgAFcAbwByAGwAZAAhACIAOwB9AA==
+Hello World!
+Hello World!
+Hello World!
+Hello World!
+Hello World!
 ```
 
 ## Dev
 
 For developing the powershell payload, the metadata must be set. And Jinja2 syntax can be used in the powershell script as follows:
 
-**File:** payload/hello-world.ps1
+**File:** payload/example.ps1
 ```
 ##########
-Name: hello-world
+Name: example
 Author: Jusmistic
-Description: Print Hello-World! [COUNT] time(s)
+Description: Print a word [COUNT] time(s)
 Options:
-    count: "Times you want to print Hello world"
+    word: "The word that you want to print"
+    count: "Times you want to print the word"
 ##########
 
-For ($i=0; $i -lt {{ count  }}; $i++) {
-    Write-Host "Hello, World!";
+For ($i=0; $i -lt {{ count }}; $i++) {
+    Write-Host "{{ word }}";
 }
 ```
 
