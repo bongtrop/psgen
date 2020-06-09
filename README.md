@@ -63,6 +63,16 @@ Powershell Payloads
 │ reverse-shell        │ @nikhil_mitt  │ Spawn Reverse shell                      │
 ╘══════════════════════╧═══════════════╧══════════════════════════════════════════╛
 
+$ psgen hello-world -s     
+
+Payload Detail
+==============
+Payload Name: hello-world
+Payload Author: Jusmistic
+Payload Description: Print Hello-World! [COUNT] time(s)
+Payload Options:
+  - count => 'Times you want to print Hello world'
+
 $ psgen hello-world count=5
 
 Payload Detail
