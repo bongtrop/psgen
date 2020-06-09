@@ -4,7 +4,7 @@
 
 psgen is a powershell payload generator tool for hacking. It can be used to generate, minify, and encode the powershell payload (e.g., reverse-shell, download-file, runas) to copyable text format.
 
-
+*NOTE : This project creates for helping me to generate the copyable powershell payload and run it on window cmd shell.*
 
 ## Installation
 
@@ -71,6 +71,8 @@ Payload Name: hello-world
 Payload Author: Jusmistic
 Payload Description: Print Hello-World! [COUNT] time(s)
 Payload Options: count='5', 
+## Note
+
 
 Payload Output
 ==============
@@ -102,7 +104,3 @@ For ($i=0; $i -lt {{ count  }}; $i++) {
     Write-Host "Hello, World!";
 }
 ```
-
-## Note
-
-This project creates for helping me to generate the copyable powershell payload and run it on window cmd shell. 
