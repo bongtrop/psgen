@@ -17,7 +17,7 @@ setup(name=psgen.__name__,
       license='MIT',
 
       url='https://github.com/bongtrop/psgen',
-      description='A powershell payload generator tool for hacking',
+      description=psgen.__doc__,
       long_description=open("README.md").read(),
       packages=['psgen'],
       include_package_data = True,
