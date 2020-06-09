@@ -118,4 +118,4 @@ For ($i=0; $i -lt {{ count }}; $i++) {
 
 The psgen tool also loads payloads in the home directory as `~/.psgen/payload`. Therefore, you can put your payload there (e.g., `~/.psgen/payload/shutdown.ps1`).
 
-*Please note that due to powershell minifier module all powershell command in the payload must be end with `;` character.*
+*Please note that due to powershell minifier module all powershell command in the payload must end with `;` character.*
